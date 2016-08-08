@@ -6,6 +6,8 @@ defmodule ClassList.Class do
     field :teacher, :string
     field :order, :integer
 
+    has_many :students, ClassList.Student, on_delete: :nilify_all
+
     timestamps()
   end
 
@@ -16,5 +18,13 @@ defmodule ClassList.Class do
     struct
     |> cast(params, [:name, :teacher, :order])
     |> validate_required([:name, :teacher, :order])
+  end
+
+  @doc """
+  Return items sorted by `order` field
+  """
+  def sorted(query) do
+    from p in query,
+    order_by: :order
   end
 end
