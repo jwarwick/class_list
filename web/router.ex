@@ -24,6 +24,7 @@ defmodule ClassList.Router do
 
     resources "/buses", BusController
     resources "/classes", ClassController
+    resources "/addresses", AddressController
   end
 
   # Other scopes may use custom stacks.
