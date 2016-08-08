@@ -19,5 +19,7 @@ defmodule ClassList.Student do
     struct
     |> cast(params, [:first_name, :last_name, :notes, :bus_id, :class_id])
     |> validate_required([:first_name, :last_name])
+    |> assoc_constraint(:bus)
+    |> assoc_constraint(:class)
   end
 end
