@@ -18,9 +18,9 @@
           <ul class="nav nav-pills pull-left" style="margin-top: 0px">
             <li><%= link "Students", to: student_path(@conn, :index) %>
             <li><%= link "Parents", to: parent_path(@conn, :index) %>
+            <li><%= link "Addresses", to: address_path(@conn, :index) %>
             <li><%= link "Classes", to: class_path(@conn, :index) %>
             <li><%= link "Buses", to: bus_path(@conn, :index) %>
-            <li><%= link "Addresses", to: address_path(@conn, :index) %>
           </ul>
         </nav>
       </header>

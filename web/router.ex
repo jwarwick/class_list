@@ -22,13 +22,13 @@ defmodule ClassList.Router do
   scope "/admin", ClassList do
     pipe_through :browser
 
-    get "/", StudentController, :index
 
     resources "/buses", BusController
     resources "/classes", ClassController
     resources "/addresses", AddressController
     resources "/students", StudentController
     resources "/parents", ParentController
+    get "/", StudentController, :index
   end
 
   # Other scopes may use custom stacks.
