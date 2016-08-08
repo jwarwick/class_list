@@ -1,0 +1,18 @@
+<h2>Show bus</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @bus.name %>
+  </li>
+
+  <li>
+    <strong>Order:</strong>
+    <%= @bus.order %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: bus_path(@conn, :edit, @bus) %>
+<%= link "Back", to: bus_path(@conn, :index) %>

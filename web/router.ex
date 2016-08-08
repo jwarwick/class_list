@@ -19,6 +19,12 @@ defmodule ClassList.Router do
     get "/", PageController, :index
   end
 
+  scope "/admin", ClassList do
+    pipe_through :browser
+
+    resources "/buses", BusController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", ClassList do
   #   pipe_through :api

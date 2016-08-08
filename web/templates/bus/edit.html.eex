@@ -1,0 +1,6 @@
+<h2>Edit bus</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: bus_path(@conn, :update, @bus) %>
+
+<%= link "Back", to: bus_path(@conn, :index) %>

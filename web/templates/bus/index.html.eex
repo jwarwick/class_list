@@ -1,0 +1,28 @@
+<h2>Listing buses</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Order</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for bus <- @buses do %>
+    <tr>
+      <td><%= bus.name %></td>
+      <td><%= bus.order %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: bus_path(@conn, :show, bus), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: bus_path(@conn, :edit, bus), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: bus_path(@conn, :delete, bus), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New bus", to: bus_path(@conn, :new) %>
