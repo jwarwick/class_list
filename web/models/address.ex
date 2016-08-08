@@ -9,6 +9,8 @@ defmodule ClassList.Address do
     field :zip, :string
     field :phone, :string
 
+    has_many :parents, ClassList.Parent, on_delete: :nilify_all
+
     timestamps()
   end
 

@@ -32,6 +32,17 @@
     <%= @address.phone %>
   </li>
 
+  <li>
+    <strong>Parents:</strong>
+    <ul>
+      <%= for parent <- @address.parents do %>
+        <li>
+          <%= link "#{parent.last_name}, #{parent.first_name}", to: parent_path(@conn, :show, parent) %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+
 </ul>
 
 <%= link "Edit", to: address_path(@conn, :edit, @address) %>

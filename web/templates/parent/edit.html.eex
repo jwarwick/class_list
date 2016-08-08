@@ -1,0 +1,6 @@
+<h2>Edit parent</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: parent_path(@conn, :update, @parent) %>
+
+<%= link "Back", to: parent_path(@conn, :index) %>

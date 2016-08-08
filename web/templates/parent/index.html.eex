@@ -1,0 +1,28 @@
+<h2>Listing parents</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for parent <- @parents do %>
+    <tr>
+      <td><%= parent.first_name %></td>
+      <td><%= parent.last_name %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: parent_path(@conn, :show, parent), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: parent_path(@conn, :edit, parent), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: parent_path(@conn, :delete, parent), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New parent", to: parent_path(@conn, :new) %>

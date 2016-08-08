@@ -1,0 +1,35 @@
+<h2>Show parent</h2>
+
+<ul>
+
+  <li>
+    <strong>First name:</strong>
+    <%= @parent.first_name %>
+  </li>
+
+  <li>
+    <strong>Last name:</strong>
+    <%= @parent.last_name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @parent.email %>
+  </li>
+
+  <li>
+    <strong>Mobile phone:</strong>
+    <%= @parent.mobile_phone %>
+  </li>
+
+  <li>
+    <strong>Address:</strong>
+    <%= if @parent.address_id do %>
+      <%= link @parent.address.address1, to: address_path(@conn, :show, @parent.address_id) %>
+    <% end %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: parent_path(@conn, :edit, @parent) %>
+<%= link "Back", to: parent_path(@conn, :index) %>
