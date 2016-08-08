@@ -7,19 +7,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello ClassList!</title>
+    <title>ClassList</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
     <div class="container">
-      <header class="header">
+      <header class="header" style="padding-top: 15px">
         <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+          <ul class="nav nav-pills pull-left" style="margin-top: 0px">
+            <li><%= link "Students", to: student_path(@conn, :index) %>
+            <li><%= link "Classes", to: class_path(@conn, :index) %>
+            <li><%= link "Buses", to: bus_path(@conn, :index) %>
+            <li><%= link "Addresses", to: address_path(@conn, :index) %>
           </ul>
         </nav>
-        <span class="logo"></span>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

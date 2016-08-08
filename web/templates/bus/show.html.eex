@@ -12,6 +12,17 @@
     <%= @bus.order %>
   </li>
 
+  <li>
+    <strong>Students:</strong>
+    <ul>
+      <%= for student <- @bus.students do %>
+        <li>
+          <%= link "#{student.last_name}, #{student.first_name}", to: student_path(@conn, :show, student) %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+
 </ul>
 
 <%= link "Edit", to: bus_path(@conn, :edit, @bus) %>

@@ -17,6 +17,17 @@
     <%= @class.order %>
   </li>
 
+  <li>
+    <strong>Students:</strong>
+    <ul>
+      <%= for student <- @class.students do %>
+        <li>
+          <%= link "#{student.last_name}, #{student.first_name}", to: student_path(@conn, :show, student) %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+
 </ul>
 
 <%= link "Edit", to: class_path(@conn, :edit, @class) %>

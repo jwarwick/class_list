@@ -13,18 +13,22 @@
   </li>
 
   <li>
-    <strong>Notes:</strong>
-    <%= @student.notes %>
-  </li>
-
-  <li>
     <strong>Bus:</strong>
-    <%= @student.bus_id %>
+    <%= if @student.bus_id do %>
+      <%= link @student.bus.name, to: bus_path(@conn, :show, @student.bus_id) %>
+    <% end %>
   </li>
 
   <li>
     <strong>Class:</strong>
-    <%= @student.class_id %>
+    <%= if @student.class_id do %>
+      <%= link @student.class.name, to: class_path(@conn, :show, @student.class_id) %>
+    <% end %>
+  </li>
+
+  <li>
+    <strong>Notes:</strong>
+    <%= @student.notes %>
   </li>
 
 </ul>

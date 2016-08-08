@@ -4,7 +4,7 @@ defmodule ClassList.StudentController do
   alias ClassList.Student
 
   def index(conn, _params) do
-    students = Repo.all(Student)
+    students = Repo.all(Student) |> Repo.preload(:class)
     render(conn, "index.html", students: students)
   end
 
@@ -27,7 +27,7 @@ defmodule ClassList.StudentController do
   end
 
   def show(conn, %{"id" => id}) do
-    student = Repo.get!(Student, id)
+    student = Repo.get!(Student, id) |> Repo.preload([:bus, :class])
     render(conn, "show.html", student: student)
   end
 
