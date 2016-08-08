@@ -23,6 +23,7 @@ defmodule ClassList.Router do
     pipe_through :browser
 
     resources "/buses", BusController
+    resources "/classes", ClassController
   end
 
   # Other scopes may use custom stacks.

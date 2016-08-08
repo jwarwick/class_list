@@ -1,0 +1,23 @@
+<h2>Show class</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @class.name %>
+  </li>
+
+  <li>
+    <strong>Teacher:</strong>
+    <%= @class.teacher %>
+  </li>
+
+  <li>
+    <strong>Order:</strong>
+    <%= @class.order %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: class_path(@conn, :edit, @class) %>
+<%= link "Back", to: class_path(@conn, :index) %>
