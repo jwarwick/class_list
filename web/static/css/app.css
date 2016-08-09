@@ -1,1 +1,11 @@
 /* This file is for your main application css. */
+
+main a {
+  padding-right: 0.5em;
+}
+
+main h2 {
+  padding-top: 50px;
+  padding-right: 300px;
+}
+
