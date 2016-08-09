@@ -1,6 +1,6 @@
 <h2>New parent</h2>
 
-<%= render "form.html", changeset: @changeset,
+<%= render "form.html", changeset: @changeset, parent: %{students: []},
                         action: parent_path(@conn, :create) %>
 
 <%= link "Back", to: parent_path(@conn, :index) %>

@@ -4,7 +4,7 @@ defmodule ClassList.ParentController do
   alias ClassList.Parent
 
   def index(conn, _params) do
-    parents = Repo.all(Parent)
+    parents = Parent |> order_by([:last_name, :first_name]) |> Repo.all
     render(conn, "index.html", parents: parents)
   end
 

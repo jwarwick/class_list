@@ -4,7 +4,7 @@ defmodule ClassList.StudentController do
   alias ClassList.Student
 
   def index(conn, _params) do
-    students = Repo.all(Student) |> Repo.preload(:class)
+    students = Student |> order_by([:last_name, :first_name]) |> Repo.all |> Repo.preload(:class)
     render(conn, "index.html", students: students)
   end
 

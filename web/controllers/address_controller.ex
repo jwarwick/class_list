@@ -4,7 +4,7 @@ defmodule ClassList.AddressController do
   alias ClassList.Address
 
   def index(conn, _params) do
-    addresses = Repo.all(Address)
+    addresses = Address |> order_by(:address1) |> Repo.all
     render(conn, "index.html", addresses: addresses)
   end
 
