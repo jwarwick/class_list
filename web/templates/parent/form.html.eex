@@ -36,6 +36,12 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :students, class: "control-label" %>
+    <%= multiple_select f, :students, student_select_list(), class: "form-control", selected: Enum.map(@parent.students, & &1.id) %>
+    <%= error_tag f, :students %>
+  </div>
+
+  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

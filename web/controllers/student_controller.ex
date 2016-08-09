@@ -27,7 +27,7 @@ defmodule ClassList.StudentController do
   end
 
   def show(conn, %{"id" => id}) do
-    student = Repo.get!(Student, id) |> Repo.preload([:bus, :class])
+    student = Repo.get!(Student, id) |> Repo.preload([:bus, :class, :parents])
     render(conn, "show.html", student: student)
   end
 

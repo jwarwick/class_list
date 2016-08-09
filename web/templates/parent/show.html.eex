@@ -29,6 +29,13 @@
     <% end %>
   </li>
 
+  <li>
+    <strong>Students:</strong>
+    <%= for s <- @parent.students do %>
+      <%= link "#{s.last_name}, #{s.first_name}", to: student_path(@conn, :show, s) %>
+    <% end %>
+  </li>
+
 </ul>
 
 <%= link "Edit", to: parent_path(@conn, :edit, @parent) %>

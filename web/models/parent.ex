@@ -9,6 +9,8 @@ defmodule ClassList.Parent do
 
     belongs_to :address, ClassList.Address
 
+    many_to_many :students, ClassList.Student, join_through: "parents_students", on_replace: :delete, on_delete: :delete_all
+
     timestamps()
   end
 
@@ -20,5 +22,6 @@ defmodule ClassList.Parent do
     |> cast(params, [:first_name, :last_name, :email, :mobile_phone, :address_id])
     |> validate_required([:first_name, :last_name])
     |> assoc_constraint(:address)
+    |> PhoenixMTM.Changeset.cast_collection(:students, ClassList.Repo, ClassList.Student)
   end
 end
