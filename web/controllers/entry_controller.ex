@@ -4,13 +4,13 @@ defmodule ClassList.EntryController do
   alias ClassList.Entry
 
   def index(conn, _params) do
-    entries = Repo.all(Entry)
+    entries = Entry |> order_by([desc: :inserted_at]) |> Repo.all
     render(conn, "index.html", entries: entries)
   end
 
   def entry(conn, _params) do
     conn
-    |> put_layout({ClassList.EntryView, "layout.html"})
+    |> put_layout({ClassList.EntryView, "script_layout.html"})
     |> render("entry.html", support_email: "bob@gmail.com")
   end
 
@@ -24,7 +24,9 @@ defmodule ClassList.EntryController do
         |> put_layout({ClassList.EntryView, "layout.html"})
         |> render("thanks.html")
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        conn
+        |> put_layout({ClassList.EntryView, "script_layout.html"})
+        |> render("entry.html", support_email: "bob@gmail.com")
     end
   end
 

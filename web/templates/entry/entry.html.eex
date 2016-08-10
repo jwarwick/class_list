@@ -3,22 +3,24 @@
     <div class="form-group">
       <label for="firstname-{{count}}" class="col-md-2 control-label">First Name</label>
       <div class="col-md-8">
-        <input name="entry[student][{{count}}][firstname]" type="text" id="firstname-{{count}}" class="form-control" placeholder="Huckle">
+        <input name="entry[student][{{count}}][first_name]" type="text" id="firstname-{{count}}" class="form-control" placeholder="Huckle">
       </div>
     </div>
 
     <div class="form-group">
       <label for="lastname-{{count}}" class="col-md-2 control-label">Last Name</label>
       <div class="col-md-8">
-        <input name="entry[student][{{count}}][lastname]" type="text" id="lastname-{{count}}" class="form-control" placeholder="Cat">
+        <input name="entry[student][{{count}}][last_name]" type="text" id="lastname-{{count}}" class="form-control" placeholder="Cat">
       </div>
     </div>
 
     <div class="form-group">
       <label for="classroom-{{count}}" class="col-md-2 control-label">Classroom</label>
       <div class="col-md-8">
-        <select name="entry[student][{{count}}][classroom]" id="classroom-{{count}}" class="form-control">
-          <option value="">None</option>
+        <select name="entry[student][{{count}}][class_id]" id="classroom-{{count}}" class="form-control">
+        <%= for {class_name, class_id} <- class_select_list() do %>
+          <option value=<%= class_id %>><%= class_name %></option>
+        <% end %>
         </select>
       </div>
     </div>
@@ -26,8 +28,11 @@
     <div class="form-group">
       <label for="bus-{{count}}" class="col-md-2 control-label">Bus</label>
       <div class="col-md-8">
-        <select name="entry[student][{{count}}][bus]" id="bus-{{count}}" class="bus-select form-control">
-          <option value="">None</option>
+        <select name="entry[student][{{count}}][bus_id]" id="bus-{{count}}" class="bus-select form-control">
+        <%= for {bus_name, bus_id} <- bus_select_list() do %>
+          <option value=<%= bus_id %>><%= bus_name %></option>
+          <%= bus_name %>
+        <% end %>
         </select>
       </div>
     </div>
@@ -44,14 +49,14 @@
     <div class="form-group">
       <label for="parent-firstname-{{count}}" class="col-md-2 control-label">First Name</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][firstname]" type="text" id="parent-firstname-{{count}}" class="form-control" placeholder="Fiona">
+        <input name="entry[parent][{{count}}][first_name]" type="text" id="parent-firstname-{{count}}" class="form-control" placeholder="Fiona">
       </div>
     </div>
 
     <div class="form-group">
       <label for="parent-lastname-{{count}}" class="col-md-2 control-label">Last Name</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][lastname]" type="text" id="parent-lastname-{{count}}" class="form-control" placeholder="Cat">
+        <input name="entry[parent][{{count}}][last_name]" type="text" id="parent-lastname-{{count}}" class="form-control" placeholder="Cat">
       </div>
     </div>
 
@@ -65,7 +70,7 @@
     <div class="form-group">
       <label for="parent-mobile-{{count}}" class="col-md-2 control-label">Mobile Phone</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][mobile]" type="tel" id="parent-mobile-{{count}}" class="form-control" placeholder="201-123-5678">
+        <input name="entry[parent][{{count}}][mobile_phone]" type="tel" id="parent-mobile-{{count}}" class="form-control" placeholder="201-123-5678">
       </div>
     </div>
 
@@ -79,21 +84,21 @@
     <div class="form-group parent-address">
       <label for="parent-tel-{{count}}" class="col-md-2 control-label">Home Phone</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][tel]" type="tel" id="parent-tel-{{count}}" class="form-control" placeholder="201-123-4567">
+        <input name="entry[parent][{{count}}][phone]" type="tel" id="parent-tel-{{count}}" class="form-control" placeholder="201-123-4567">
       </div>
     </div>
 
     <div class="form-group parent-address">
       <label for="parent-addr1-{{count}}" class="col-md-2 control-label">Address 1</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][addr1]" type="text" id="parent-addr1-{{count}}" class="form-control" placeholder="123 Anywhere St">
+        <input name="entry[parent][{{count}}][address1]" type="text" id="parent-addr1-{{count}}" class="form-control" placeholder="123 Anywhere St">
       </div>
     </div>
 
     <div class="form-group parent-address">
       <label for="parent-addr2-{{count}}" class="col-md-2 control-label">Address 2</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][addr2]" type="text" id="parent-addr2-{{count}}" class="form-control" placeholder="Apt 1">
+        <input name="entry[parent][{{count}}][address2]" type="text" id="parent-addr2-{{count}}" class="form-control" placeholder="Apt 1">
       </div>
     </div>
 
@@ -142,7 +147,7 @@
     <div class="panel panel-primary">
       <div class="panel-heading panel-heading-with-button">
         <button id="add-student-button" type="button" class="btn btn-default btn-small pull-right">
-          <span class="glyphicon glyphicon-plus-sign"></span> Add Student
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Another Student
         </button>
         <h2 class="panel-title">Student Information</h2>
       </div>
@@ -159,7 +164,7 @@
     <div class="panel panel-primary">
       <div class="panel-heading panel-heading-with-button">
         <button id="add-parent-button" type="button" class="btn btn-default btn-small pull-right">
-          <span class="glyphicon glyphicon-plus-sign"></span> Add Parent
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Another Parent
         </button>
         <h2 class="panel-title">Parent Information</h2>
       </div>
@@ -193,8 +198,8 @@
     </div>
 
     <div class="form-group">
-      <div class="col-md-offset-1 col-md-10">
-        <button type="submit" class="btn btn-lg btn-success">Submit</button>
+      <div class="col-md-offset-0 col-md-4">
+        <button type="submit" class="btn btn-lg btn-success btn-block">Submit</button>
       </div>
     </div>
 
