@@ -1,0 +1,202 @@
+<script id="student-template" type="text/x-handlebars-template">
+  <div class="student-element well">
+    <div class="form-group">
+      <label for="firstname-{{count}}" class="col-md-2 control-label">First Name</label>
+      <div class="col-md-8">
+        <input name="firstname-{{count}}" type="text" id="firstname-{{count}}" class="form-control" placeholder="Huckle">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastname-{{count}}" class="col-md-2 control-label">Last Name</label>
+      <div class="col-md-8">
+        <input name="lastname-{{count}}" type="text" id="lastname-{{count}}" class="form-control" placeholder="Cat">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="classroom-{{count}}" class="col-md-2 control-label">Classroom</label>
+      <div class="col-md-8">
+        <select name="classroom-{{count}}" id="classroom-{{count}}" class="form-control">
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bus-{{count}}" class="col-md-2 control-label">Bus</label>
+      <div class="col-md-8">
+        <select name="bus-{{count}}" id="bus-{{count}}" class="bus-select form-control">
+          <option value="">None</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn btn-danger remove-student-button">
+      <span class="glyphicon glyphicon-remove-sign"></span> Remove
+    </button>
+
+  </div>
+</script>
+
+<script id="parent-template" type="text/x-handlebars-template">
+  <div class="parent-element well">
+    <div class="form-group">
+      <label for="parent-firstname-{{count}}" class="col-md-2 control-label">First Name</label>
+      <div class="col-md-8">
+        <input name="parent-firstname-{{count}}" type="text" id="parent-firstname-{{count}}" class="form-control" placeholder="Fiona">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="parent-lastname-{{count}}" class="col-md-2 control-label">Last Name</label>
+      <div class="col-md-8">
+        <input name="parent-lastname-{{count}}" type="text" id="parent-lastname-{{count}}" class="form-control" placeholder="Cat">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="parent-email-{{count}}" class="col-md-2 control-label">Email</label>
+      <div class="col-md-8">
+        <input name="parent-email-{{count}}" type="email" id="parent-email-{{count}}" class="form-control" placeholder="fiona@busytown.net">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="parent-mobile-{{count}}" class="col-md-2 control-label">Mobile Phone</label>
+      <div class="col-md-8">
+        <input name="parent-mobile-{{count}}" type="tel" id="parent-mobile-{{count}}" class="form-control" placeholder="201-123-5678">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="parent-same-address-{{count}}" class="col-md-4 control-label">
+        <input name="parent-same-address-{{count}}" type="checkbox" value="1" id="parent-same-address-{{count}}" class="parent-same-address-checkbox">
+        Same Address As Previous Parent
+      </label>
+    </div>
+
+    <div class="form-group parent-address">
+      <label for="parent-tel-{{count}}" class="col-md-2 control-label">Home Phone</label>
+      <div class="col-md-8">
+        <input name="parent-tel-{{count}}" type="tel" id="parent-tel-{{count}}" class="form-control" placeholder="201-123-4567">
+      </div>
+    </div>
+
+    <div class="form-group parent-address">
+      <label for="parent-addr1-{{count}}" class="col-md-2 control-label">Address 1</label>
+      <div class="col-md-8">
+        <input name="parent-addr1-{{count}}" type="text" id="parent-addr1-{{count}}" class="form-control" placeholder="123 Anywhere St">
+      </div>
+    </div>
+
+    <div class="form-group parent-address">
+      <label for="parent-addr2-{{count}}" class="col-md-2 control-label">Address 2</label>
+      <div class="col-md-8">
+        <input name="parent-addr2-{{count}}" type="text" id="parent-addr2-{{count}}" class="form-control" placeholder="Apt 1">
+      </div>
+    </div>
+
+    <div class="form-group parent-address">
+      <label for="parent-city-{{count}}" class="col-md-2 control-label">City</label>
+      <div class="col-md-8">
+        <input name="parent-city-{{count}}" type="text" id="parent-city-{{count}}" class="form-control" placeholder="Busytown">
+      </div>
+    </div>
+
+    <div class="form-group parent-address">
+      <label for="parent-state-{{count}}" class="col-md-2 control-label">State</label>
+      <div class="col-md-8">
+        <input name="parent-state-{{count}}" type="text" id="parent-state-{{count}}" class="form-control" placeholder="MA">
+      </div>
+    </div>
+
+    <div class="form-group parent-address">
+      <label for="parent-zip-{{count}}" class="col-md-2 control-label">Zip</label>
+      <div class="col-md-8">
+        <input name="parent-zip-{{count}}" type="text" id="parent-zip-{{count}}" class="form-control" placeholder="01002">
+      </div>
+    </div>
+
+    <button class="btn btn-danger remove-parent-button">
+      <span class="glyphicon glyphicon-remove-sign"></span> Remove
+    </button>
+
+  </div>
+</script>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>Add your information!</h1>
+    Enter your information to be included in the student directory. All fields are optional.
+    <%= if @support_email do %>
+      <br>Questions or comments? Email <a href='mailto:<%= @support_email %>?Subject=Support'>
+        <%= @support_email %></a>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+
+  <form class="form-horizontal" role="form" action="/" method="post">
+    <div class="panel panel-primary">
+      <div class="panel-heading panel-heading-with-button">
+        <button id="add-student-button" type="button" class="btn btn-default btn-small pull-right">
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Student
+        </button>
+        <h2 class="panel-title">Student Information</h2>
+      </div>
+
+      <div class="panel-body">
+
+        <div id="student-list">
+          <!-- student templates get added here -->
+        </div>
+
+      </div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading panel-heading-with-button">
+        <button id="add-parent-button" type="button" class="btn btn-default btn-small pull-right">
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Parent
+        </button>
+        <h2 class="panel-title">Parent Information</h2>
+      </div>
+
+      <div class="panel-body">
+
+        <div id="parent-list">
+          <!-- parent templates get added here -->
+        </div>
+
+      </div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="panel-title">Notes</h2>
+      </div>
+
+      <div class="panel-body">
+
+        <div id="notes-div">
+          <div class="form-group">
+            <label class="sr-only" for="notes">Notes</label>
+            <div class="col-md-offset-2 col-md-8">
+              <textarea name="notes" id="notes" rows="3" class="form-control" placeholder="Anything you want the fine folks compiling the directory to know"></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-offset-1 col-md-10">
+        <button type="submit" class="btn btn-lg btn-success">Submit</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

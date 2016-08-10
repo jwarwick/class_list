@@ -16,18 +16,19 @@ defmodule ClassList.Router do
   scope "/", ClassList do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", EntryController, :new
+    post "/", EntryController, :create
   end
 
   scope "/admin", ClassList do
     pipe_through :browser
-
 
     resources "/buses", BusController
     resources "/classes", ClassController
     resources "/addresses", AddressController
     resources "/students", StudentController
     resources "/parents", ParentController
+    resources "/entries", EntryController
     get "/", StudentController, :index
   end
 
