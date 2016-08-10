@@ -21,6 +21,7 @@
             <li><%= link "Addresses", to: address_path(@conn, :index) %>
             <li><%= link "Classes", to: class_path(@conn, :index) %>
             <li><%= link "Buses", to: bus_path(@conn, :index) %>
+            <li><%= link "Entries", to: entry_path(@conn, :index) %>
           </ul>
         </nav>
       </header>

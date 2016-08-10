@@ -3,7 +3,7 @@ defmodule ClassList.Repo.Migrations.CreateEntry do
 
   def change do
     create table(:entries) do
-      add :data, :text
+      add :data, :bytea
 
       timestamps()
     end

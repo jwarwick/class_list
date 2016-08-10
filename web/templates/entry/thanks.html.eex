@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="alert alert-success">
+    <h3>Thanks</h3>
+    Your information has been submitted.
+    <a class="alert-link" href='/'>Add another student</a>
+  </div>
+</div>
+

@@ -2,7 +2,7 @@ defmodule ClassList.Entry do
   use ClassList.Web, :model
 
   schema "entries" do
-    field :data, :string
+    field :data, :binary
 
     timestamps()
   end
