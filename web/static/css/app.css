@@ -9,3 +9,9 @@ main h2 {
   padding-right: 300px;
 }
 
+h2.panel-title {
+  padding-top: 8px;
+  padding-right: 0px;
+  padding-bottom: 8px;
+}
+
