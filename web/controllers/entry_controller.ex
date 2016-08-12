@@ -1,5 +1,6 @@
 defmodule ClassList.EntryController do
   use ClassList.Web, :controller
+  require Logger
 
   alias ClassList.Entry
 
@@ -19,15 +20,17 @@ defmodule ClassList.EntryController do
     changeset = Entry.changeset(%Entry{}, %{data: :erlang.term_to_binary(entry_params)})
 
     case Repo.insert(changeset) do
-      {:ok, _entry} ->
-        conn
-        |> put_layout({ClassList.EntryView, "layout.html"})
-        |> render("thanks.html")
       {:error, _changeset} ->
-        conn
-        |> put_layout({ClassList.EntryView, "script_layout.html"})
-        |> render("entry.html", support_email: "bob@gmail.com")
+        Logger.error "Failed to save entry: #{inspect entry_params}"
+      _ ->
+        :ok
     end
+
+    {students, addresses, parents} = ClassList.EntryConverter.convert(entry_params)
+
+    conn
+    |> put_layout({ClassList.EntryView, "layout.html"})
+    |> render("thanks.html")
   end
 
   def show(conn, %{"id" => id}) do

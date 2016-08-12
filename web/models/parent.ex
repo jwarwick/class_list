@@ -24,4 +24,18 @@ defmodule ClassList.Parent do
     |> assoc_constraint(:address)
     |> PhoenixMTM.Changeset.cast_collection(:students, ClassList.Repo, ClassList.Student)
   end
+
+  @doc """
+  Builds a changeset based on the `struct` and `params`.
+  For use when converting an Entry, doesn't enforce required fields.
+  """
+  def entry_changeset(struct, {params, address_id}, student_ids) do
+    params = Map.put(params, "address_id", address_id) |> Map.put("students", student_ids)
+
+    struct
+    |> cast(params, [:first_name, :last_name, :email, :mobile_phone, :address_id])
+    |> assoc_constraint(:address)
+    |> PhoenixMTM.Changeset.cast_collection(:students, ClassList.Repo, ClassList.Student)
+  end
+
 end

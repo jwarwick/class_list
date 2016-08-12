@@ -24,4 +24,15 @@ defmodule ClassList.Student do
     |> assoc_constraint(:bus)
     |> assoc_constraint(:class)
   end
+
+  @doc """
+  Builds a changeset based on the `struct` and `params`.
+  For use when converting an Entry, doesn't enforce required fields.
+  """
+  def entry_changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:first_name, :last_name, :notes, :bus_id, :class_id])
+    |> assoc_constraint(:bus)
+    |> assoc_constraint(:class)
+  end
 end

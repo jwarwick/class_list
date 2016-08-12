@@ -22,4 +22,13 @@ defmodule ClassList.Address do
     |> cast(params, [:address1, :address2, :city, :state, :zip, :phone])
     |> validate_required([:address1, :city, :state, :zip])
   end
+
+  @doc """
+  Builds a changeset based on the `struct` and `params`.
+  For use when converting an Entry, doesn't enforce required fields.
+  """
+  def entry_changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:address1, :address2, :city, :state, :zip, :phone])
+  end
 end
