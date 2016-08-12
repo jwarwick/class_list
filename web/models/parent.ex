@@ -20,6 +20,7 @@ defmodule ClassList.Parent do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:first_name, :last_name, :email, :mobile_phone, :address_id])
+    |> validate_required([:first_name, :last_name])
     |> assoc_constraint(:address)
     |> PhoenixMTM.Changeset.cast_collection(:students, ClassList.Repo, ClassList.Student)
   end

@@ -20,5 +20,6 @@ defmodule ClassList.Address do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:address1, :address2, :city, :state, :zip, :phone])
+    |> validate_required([:address1, :city, :state, :zip])
   end
 end

@@ -20,6 +20,7 @@ defmodule ClassList.Student do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:first_name, :last_name, :notes, :bus_id, :class_id])
+    |> validate_required([:first_name, :last_name])
     |> assoc_constraint(:bus)
     |> assoc_constraint(:class)
   end

@@ -143,7 +143,7 @@
 
 <div class="container">
 
-  <%= form_for @conn, "/", [as: :entry, class: "form-horizontal"],  fn f -> %>
+  <%= form_for @conn, "/", [as: :entry, class: "form-horizontal"],  fn _ -> %>
     <div class="panel panel-primary">
       <div class="panel-heading panel-heading-with-button">
         <button id="add-student-button" type="button" class="btn btn-default btn-small pull-right">

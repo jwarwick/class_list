@@ -23,7 +23,7 @@ defmodule ClassList.EntryController do
         conn
         |> put_layout({ClassList.EntryView, "layout.html"})
         |> render("thanks.html")
-      {:error, changeset} ->
+      {:error, _changeset} ->
         conn
         |> put_layout({ClassList.EntryView, "script_layout.html"})
         |> render("entry.html", support_email: "bob@gmail.com")
@@ -34,5 +34,17 @@ defmodule ClassList.EntryController do
     entry = Repo.get!(Entry, id)
     entry = %Entry{entry | data: :erlang.binary_to_term(entry.data)}
     render(conn, "show.html", entry: entry)
+  end
+
+  def delete(conn, %{"id" => id}) do
+    entry = Repo.get!(Entry, id)
+
+    # Here we use delete! (with a bang) because we expect
+    # it to always work (and if it does not, it will raise).
+    Repo.delete!(entry)
+
+    conn
+    |> put_flash(:info, "Entry deleted successfully.")
+    |> redirect(to: entry_path(conn, :index))
   end
 end
