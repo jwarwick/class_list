@@ -26,7 +26,8 @@ defmodule ClassList.EntryController do
         :ok
     end
 
-    {students, addresses, parents} = ClassList.EntryConverter.convert(entry_params)
+    ClassList.EntryConverter.convert(entry_params)
+    |> check_results
 
     conn
     |> put_layout({ClassList.EntryView, "layout.html"})
@@ -50,4 +51,7 @@ defmodule ClassList.EntryController do
     |> put_flash(:info, "Entry deleted successfully.")
     |> redirect(to: entry_path(conn, :index))
   end
+
+  defp check_results({{:ok, _}, {:ok, _}, {:ok, _}}), do: :ok
+  defp check_results(results), do: Logger.error "Failed to convert entry: #{inspect results}"
 end
