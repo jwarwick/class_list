@@ -3,6 +3,7 @@ defmodule ClassList.StudentView do
   alias ClassList.Bus
   alias ClassList.Class
   alias ClassList.Repo
+  alias ClassList.Student
 
   def bus_select_list do
     Bus.sorted(Bus)
@@ -15,4 +16,6 @@ defmodule ClassList.StudentView do
     |> Repo.all
     |> Enum.map(fn class -> {class.name, class.id} end)
   end
+
+  def student_count, do: Repo.aggregate(Student, :count, :id)
 end

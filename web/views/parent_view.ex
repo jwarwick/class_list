@@ -3,6 +3,7 @@ defmodule ClassList.ParentView do
   require Ecto.Query
   alias ClassList.Address
   alias ClassList.Student
+  alias ClassList.Parent
   alias ClassList.Repo
 
   def address_select_list do
@@ -18,4 +19,6 @@ defmodule ClassList.ParentView do
     |> Repo.all
     |> Enum.map(fn student -> {"#{student.last_name}, #{student.first_name}", student.id} end)
   end
+
+  def parent_count, do: Repo.aggregate(Parent, :count, :id)
 end

@@ -2,6 +2,7 @@ defmodule ClassList.EntryView do
   use ClassList.Web, :view
   alias ClassList.Bus
   alias ClassList.Class
+  alias ClassList.Entry
   alias ClassList.Repo
 
   def bus_select_list do
@@ -15,4 +16,6 @@ defmodule ClassList.EntryView do
     |> Repo.all
     |> Enum.map(fn class -> {"#{class.name}, #{class.teacher}", class.id} end)
   end
+
+  def entry_count, do: Repo.aggregate(Entry, :count, :id)
 end
