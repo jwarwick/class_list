@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>ClassList</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
@@ -13,19 +11,25 @@
 
   <body>
     <div class="container">
-      <header class="header" style="padding-top: 15px">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-left" style="margin-top: 0px">
-            <li><%= link "Students", to: student_path(@conn, :index) %>
-            <li><%= link "Parents", to: parent_path(@conn, :index) %>
-            <li><%= link "Addresses", to: address_path(@conn, :index) %>
-            <li><%= link "Classes", to: class_path(@conn, :index) %>
-            <li><%= link "Buses", to: bus_path(@conn, :index) %>
-            <li><%= link "Entries", to: entry_path(@conn, :index) %>
-            <li><%= link "Directory", to: directory_path(@conn, :index) %>
-          </ul>
-        </nav>
-      </header>
+      <%= if @current_user do %>
+        <header class="header" style="padding-top: 15px">
+          <nav role="navigation">
+            <ul class="nav nav-pills pull-left" style="margin-top: 0px">
+              <li><%= link "Students", to: student_path(@conn, :index) %></li>
+              <li><%= link "Parents", to: parent_path(@conn, :index) %></li>
+              <li><%= link "Addresses", to: address_path(@conn, :index) %></li>
+              <li><%= link "Classes", to: class_path(@conn, :index) %></li>
+              <li><%= link "Buses", to: bus_path(@conn, :index) %></li>
+              <li><%= link "Entries", to: entry_path(@conn, :index) %></li>
+              <li><%= link "Users", to: user_path(@conn, :index) %></li>
+              <li><%= link "Directory", to: directory_path(@conn, :index) %></li>
+            </ul>
+            <ol class="breadcrumb text-right">
+              <%= ClassList.Coherence.ViewHelpers.coherence_links(@conn, :layout) %>
+            </ol>
+          </nav>
+        </header>
+      <% end %>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
