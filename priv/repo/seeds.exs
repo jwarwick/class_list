@@ -11,5 +11,5 @@
 # and so on) as they will fail if something goes wrong.
 ClassList.Repo.delete_all ClassList.User
 
-ClassList.User.changeset(%ClassList.User{}, %{name: "Test User", email: "testuser@example.com", password: "secret", password_confirmation: "secret"})
+ClassList.User.changeset(%ClassList.User{}, %{name: "Test User", email: "test@example.com", password: "secret", password_confirmation: "secret"})
 |> ClassList.Repo.insert!
