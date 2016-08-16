@@ -12,7 +12,7 @@ defmodule ClassList.EntryController do
   def entry(conn, _params) do
     conn
     |> put_layout({ClassList.EntryView, "script_layout.html"})
-    |> render("entry.html", support_email: "bob@gmail.com")
+    |> render("entry.html", support_email: System.get_env("SUPPORT_EMAIL"))
   end
 
   def create_entry(conn, %{"entry" => entry_params}) do
