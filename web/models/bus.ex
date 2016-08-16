@@ -4,6 +4,7 @@ defmodule ClassList.Bus do
   schema "buses" do
     field :name, :string
     field :order, :integer
+    field :should_display, :boolean
 
     has_many :students, ClassList.Student, on_delete: :nilify_all
 
@@ -15,8 +16,8 @@ defmodule ClassList.Bus do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :order])
-    |> validate_required([:name, :order])
+    |> cast(params, [:name, :order, :should_display])
+    |> validate_required([:name, :order, :should_display])
   end
 
   @doc """

@@ -18,6 +18,12 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :should_display, class: "control-label" %>
+    <%= checkbox f, :should_display, class: "form-control" %>
+    <%= error_tag f, :should_display %>
+  </div>
+
+  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

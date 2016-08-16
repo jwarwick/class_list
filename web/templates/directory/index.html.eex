@@ -11,7 +11,9 @@
           <% student = preload_student(student) %>
           <div class="student_name_bus">
             <span class="student_name"><b><%= student.last_name %>, <%= student.first_name %></span></b><br>
-            <span class="bus"><%= student.bus.name %></span><br>
+            <%= if student.bus.should_display do %>
+              <span class="bus"><%= student.bus.name %></span><br>
+            <% end %>
             <br>
           </div>
           <%= for {parent_list, address} <- group_parents(student) do %>
