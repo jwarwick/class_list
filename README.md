@@ -22,6 +22,18 @@ Define the following environment variables to enable certain features
   * `NOTIFY_EMAIL_TO` and `NOTIFY_EMAIL_FROM`: also need to be defined to use the Mailgun interface
   * `SUPPORT_EMAIL`: if defined, adds a line of help text with a `mailto` link in to the top of the page
 
+## Heroku Setup
+Follow this guide: http://www.phoenixframework.org/docs/heroku
+  * heroku addons:create heroku-postgresql:hobby-dev
+  * heroku config:set POOL_SIZE=18
+  * mix phoenix.gen.secret
+  * heroku config:set SECRET_KEY_BASE="XXXX"
+  * heroku config:set MAILGUN_DOMAIN="XXXX"
+  * heroku config:set MAILGUN_API_KEY="XXXX"
+  * heroku config:set NOTIFY_EMAIL_TO="XXXX"
+  * heroku config:set NOTIFY_EMAIL_FROM="XXXX"
+  * heroku config:set SUPPORT_EMAIL="XXXX"
+
 ## License
 
 See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
