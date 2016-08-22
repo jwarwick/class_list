@@ -33,6 +33,11 @@ Follow this guide: http://www.phoenixframework.org/docs/heroku
   * heroku config:set NOTIFY_EMAIL_TO="XXXX"
   * heroku config:set NOTIFY_EMAIL_FROM="XXXX"
   * heroku config:set SUPPORT_EMAIL="XXXX"
+  * Override default buildpack Elixir and Erlang versions to use at least Erlang v19 and Elixir v1.3
+  * heroku run mix ecto.create (apparently you can ignore the errors...)
+  * heroku run mix ecto.migrate
+  * heroku run "POOL_SIZE=2 mix run priv/repo/seeds.exs"
+  * Log in with default credentials and set a real password
 
 ## License
 
