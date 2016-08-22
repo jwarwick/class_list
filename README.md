@@ -12,10 +12,14 @@ Next, create `Classes` and `Buses` from within the admin interface. Those models
 ## Interface
 The main data entry point is served from `/`, it does not require a login. All administration is done from the `/admin` url, these paths do require a user login.
 
+## Email Notifications
+The app can send email to inform the maintainer that a new entry has been received. To use this feature, define the environment variables described below. The application uses [Mailgun](mailgun.com) to send email.
+
 ## Environment Variables
 Define the following environment variables to enable certain features
-  * (Not implemented yet) `SENDGRID_USERNAME` and `SENDGRID_PASSWORD`: to send email using the Heroku SendGrid Addon
-  * (Not implemented yet) `NOTIFY_EMAIL_TO` and `NOTIFY_EMAIL_FROM`: also need to be defined to use the SendGrid Addon
+  * `MAILGUN_DOMAIN`: as specified in the Mailgun control panel, something like `https://api.mailgun.net/v3/sandbox-our-domain.mailgun.org`
+  * `MAILGUN_API_KEY`: as specified in the Mailgun control panel
+  * `NOTIFY_EMAIL_TO` and `NOTIFY_EMAIL_FROM`: also need to be defined to use the Mailgun interface
   * `SUPPORT_EMAIL`: if defined, adds a line of help text with a `mailto` link in to the top of the page
 
 ## License

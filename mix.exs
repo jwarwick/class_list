@@ -39,7 +39,9 @@ defmodule ClassList.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:phoenix_mtm, "~> 0.2.0"},
-     {:coherence, "~> 0.2"}]
+     {:coherence, "~> 0.2"},
+     {:poison, "~> 2.1", override: true},
+     {:mailgun, "~> 0.1.2"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

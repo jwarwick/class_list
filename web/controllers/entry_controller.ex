@@ -3,6 +3,7 @@ defmodule ClassList.EntryController do
   require Logger
 
   alias ClassList.Entry
+  alias ClassList.Mailer
 
   def index(conn, _params) do
     entries = Entry |> order_by([desc: :inserted_at]) |> Repo.all
@@ -27,7 +28,7 @@ defmodule ClassList.EntryController do
     end
 
     ClassList.EntryConverter.convert(entry_params)
-    |> check_results
+    Mailer.send_notification_email(entry_params)
 
     conn
     |> put_layout({ClassList.EntryView, "layout.html"})
@@ -52,6 +53,4 @@ defmodule ClassList.EntryController do
     |> redirect(to: entry_path(conn, :index))
   end
 
-  defp check_results({{:ok, _}, {:ok, _}, {:ok, _}}), do: :ok
-  defp check_results(results), do: Logger.error "Failed to convert entry: #{inspect results}"
 end

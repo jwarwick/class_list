@@ -1,8 +1,5 @@
 defmodule ClassList.DirectoryView do
   use ClassList.Web, :view
-  import Ecto.Query
-  alias ClassList.Student
-  alias ClassList.Parent
   alias ClassList.Repo
 
   def preload_student(student) do
