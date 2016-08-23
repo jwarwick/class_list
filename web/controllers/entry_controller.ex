@@ -30,7 +30,7 @@ defmodule ClassList.EntryController do
     ClassList.EntryConverter.convert(entry_params)
     |> check_conversion
 
-    Mailer.send_notification_email(entry_params)
+    Task.start(fn -> Mailer.send_notification_email(entry_params) end)
 
     conn
     |> put_layout({ClassList.EntryView, "layout.html"})

@@ -22,7 +22,7 @@ defmodule ClassList.Mailer do
       )
 
     case result do
-      {:ok, _} -> :ok
+      {:ok, _} -> Logger.info "Sent notification email: #{inspect content}"
       _ -> Logger.error "Failed to send email: #{inspect result}"
     end
   end
