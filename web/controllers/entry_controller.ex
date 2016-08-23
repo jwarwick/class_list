@@ -17,7 +17,7 @@ defmodule ClassList.EntryController do
   end
 
   def create_entry(conn, %{"entry" => entry_params}) do
-    IO.inspect entry_params
+    Logger.info "Creating entry: #{inspect entry_params}"
     changeset = Entry.changeset(%Entry{}, %{data: :erlang.term_to_binary(entry_params)})
 
     case Repo.insert(changeset) do
