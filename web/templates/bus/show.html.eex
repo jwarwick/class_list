@@ -14,7 +14,7 @@
 
   <li>
     <strong>Should display in directory:</strong>
-    <%= if @bus.order do %>
+    <%= if @bus.should_display do %>
       Yes
     <% else %>
       No
