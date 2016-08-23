@@ -28,12 +28,28 @@ defmodule ClassList.EntryController do
     end
 
     ClassList.EntryConverter.convert(entry_params)
+    |> check_conversion
+
     Mailer.send_notification_email(entry_params)
 
     conn
     |> put_layout({ClassList.EntryView, "layout.html"})
     |> render("thanks.html")
   end
+
+  defp check_conversion(params = {students, addresses, parents}) do
+    result = 
+      [students, addresses, parents]
+      |> List.flatten
+      |> Enum.all?(&check_ok/1)
+
+    unless result do
+      Logger.error "Failed to convert entry: #{inspect params}"
+    end
+  end
+
+  defp check_ok({:ok, _}), do: true
+  defp check_ok(_), do: false
 
   def show(conn, %{"id" => id}) do
     entry = Repo.get!(Entry, id)
