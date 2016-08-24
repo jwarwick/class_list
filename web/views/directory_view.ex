@@ -1,5 +1,6 @@
 defmodule ClassList.DirectoryView do
   use ClassList.Web, :view
+  @dialyzer :no_match
   alias ClassList.Repo
 
   def preload_student(student) do

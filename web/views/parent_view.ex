@@ -1,5 +1,6 @@
 defmodule ClassList.ParentView do
   use ClassList.Web, :view
+  @dialyzer :no_match
   require Ecto.Query
   alias ClassList.Address
   alias ClassList.Student

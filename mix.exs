@@ -10,7 +10,8 @@ defmodule ClassList.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases(),
-     deps: deps()]
+     deps: deps(),
+     dialyzer: [plt_add_deps: :transitive]]
   end
 
   # Configuration for the OTP application.
@@ -41,7 +42,8 @@ defmodule ClassList.Mixfile do
      {:phoenix_mtm, "~> 0.2.0"},
      {:coherence, "~> 0.2"},
      {:poison, "~> 2.1", override: true},
-     {:mailgun, "~> 0.1.2"}]
+     {:mailgun, "~> 0.1.2"},
+     {:dialyxir, "~> 0.3.5", only: :dev}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

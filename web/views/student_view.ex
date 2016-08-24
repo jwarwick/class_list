@@ -1,5 +1,6 @@
 defmodule ClassList.StudentView do
   use ClassList.Web, :view
+  @dialyzer :no_match
   alias ClassList.Bus
   alias ClassList.Class
   alias ClassList.Repo

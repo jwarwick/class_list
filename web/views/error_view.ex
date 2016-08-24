@@ -1,5 +1,6 @@
 defmodule ClassList.ErrorView do
   use ClassList.Web, :view
+  @dialyzer :no_match
 
   def render("404.html", _assigns) do
     "Page not found"
