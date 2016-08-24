@@ -119,7 +119,7 @@
     <div class="form-group parent-address">
       <label for="parent-zip-{{count}}" class="col-md-2 control-label">Zip</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][zip]" type="text" id="parent-zip-{{count}}" class="form-control" placeholder="01002">
+        <input name="entry[parent][{{count}}][zip]" type="text" id="parent-zip-{{count}}" class="form-control" placeholder="01072">
       </div>
     </div>
 

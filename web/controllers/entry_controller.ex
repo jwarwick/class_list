@@ -27,14 +27,30 @@ defmodule ClassList.EntryController do
         :ok
     end
 
-    ClassList.EntryConverter.convert(entry_params)
-    |> check_conversion
+    {student_list, _, _} = 
+      entry_params
+      |> ClassList.EntryConverter.convert
+      |> check_conversion
+
+    students =
+      student_list
+      |> strip_ok
+      |> preload_fields
 
     Task.start(fn -> Mailer.send_notification_email(entry_params) end)
 
     conn
     |> put_layout({ClassList.EntryView, "layout.html"})
-    |> render("thanks.html")
+    |> render("thanks.html", support_email: System.get_env("SUPPORT_EMAIL"), students: students)
+
+  end
+  
+  defp strip_ok(list) do
+    Enum.map(list, fn {_, s} -> s end)
+  end
+
+  defp preload_fields(list) do
+    Enum.map(list, fn s -> Repo.preload(s, [:bus, :class, [parents: :address]]) end)
   end
 
   defp check_conversion(params = {students, addresses, parents}) do
@@ -46,6 +62,7 @@ defmodule ClassList.EntryController do
     unless result do
       Logger.error "Failed to convert entry: #{inspect params}"
     end
+    params
   end
 
   defp check_ok({:ok, _}), do: true
