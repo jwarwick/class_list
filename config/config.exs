@@ -25,7 +25,9 @@ config :logger, :console,
 # Email support via Mailgun
 config :class_list,
   mailgun_domain: System.get_env("MAILGUN_DOMAIN"),
-  mailgun_key: System.get_env("MAILGUN_API_KEY")
+  mailgun_key: System.get_env("MAILGUN_API_KEY"),
+  notify_to: System.get_env("NOTIFY_EMAIL_TO"),
+  notify_from: System.get_env("NOTIFY_EMAIL_FROM")
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

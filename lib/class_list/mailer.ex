@@ -6,12 +6,10 @@ defmodule ClassList.Mailer do
   require Logger
   use Mailgun.Client,
     domain: Application.get_env(:class_list, :mailgun_domain),
-    key: Application.get_env(:class_list, :mailgun_key)#,
-    # mode: :test,
-    # test_file_path: "/tmp/mailgun.json"
+    key: Application.get_env(:class_list, :mailgun_key)
 
-  @notify_to System.get_env("NOTIFY_EMAIL_TO")
-  @notify_from System.get_env("NOTIFY_EMAIL_FROM")
+  @notify_to Application.get_env(:class_list, :notify_to)
+  @notify_from Application.get_env(:class_list, :notify_from)
 
   def send_notification_email(content) do
     result = send_email(
