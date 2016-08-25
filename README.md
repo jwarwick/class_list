@@ -17,7 +17,6 @@ The app can send email to inform the maintainer that a new entry has been receiv
 
 ## Environment Variables
 Define the following environment variables to enable certain features
-  * `HTTPS_HOST`: sets the `config/prod.exs` endpoint hostname for https support
   * `MAILGUN_DOMAIN`: as specified in the Mailgun control panel, something like `https://api.mailgun.net/v3/sandbox-our-domain.mailgun.org`
   * `MAILGUN_API_KEY`: as specified in the Mailgun control panel
   * `NOTIFY_EMAIL_TO` and `NOTIFY_EMAIL_FROM`: also need to be defined to use the Mailgun interface
@@ -28,7 +27,6 @@ Follow this guide: http://www.phoenixframework.org/docs/heroku
   * heroku addons:create heroku-postgresql:hobby-dev
   * heroku config:set POOL_SIZE=18
   * mix phoenix.gen.secret
-  * heroku config:set HTTPS_HOST="XXXX"
   * heroku config:set SECRET_KEY_BASE="XXXX"
   * heroku config:set MAILGUN_DOMAIN="XXXX"
   * heroku config:set MAILGUN_API_KEY="XXXX"
@@ -36,6 +34,7 @@ Follow this guide: http://www.phoenixframework.org/docs/heroku
   * heroku config:set NOTIFY_EMAIL_FROM="XXXX"
   * heroku config:set SUPPORT_EMAIL="XXXX"
   * Override default buildpack Elixir and Erlang versions to use at least Erlang v19 and Elixir v1.3
+  * Modify the `url:host:` setting in `config/prod.exs`
   * heroku run mix ecto.create (apparently you can ignore the errors...)
   * heroku run mix ecto.migrate
   * heroku run "POOL_SIZE=2 mix run priv/repo/seeds.exs"
