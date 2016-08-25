@@ -28,6 +28,7 @@ Follow this guide: http://www.phoenixframework.org/docs/heroku
   * heroku addons:create heroku-postgresql:hobby-dev
   * heroku config:set POOL_SIZE=18
   * mix phoenix.gen.secret
+  * heroku config:set HTTPS_HOST="XXXX"
   * heroku config:set SECRET_KEY_BASE="XXXX"
   * heroku config:set MAILGUN_DOMAIN="XXXX"
   * heroku config:set MAILGUN_API_KEY="XXXX"
