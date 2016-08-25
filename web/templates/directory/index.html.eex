@@ -10,7 +10,7 @@
         <%= for student <- class.students do %>
           <% student = preload_student(student) %>
           <div class="student_name_bus">
-            <span class="student_name"><b><%= student.last_name %>, <%= student.first_name %></span></b><br>
+            <h4 class="student_name"><%= student.last_name %>, <%= student.first_name %></h4>
             <%= if student.bus.should_display do %>
               <span class="bus"><%= student.bus.name %></span><br>
             <% end %>
@@ -19,14 +19,16 @@
           <%= for {parent_list, address} <- group_parents(student) do %>
             <%= for parent <- parent_list do %>
               <div class="parent_name">
-                <span><%= parent.first_name %> <%= parent.last_name %></span><br>
-                <%= if not_empty(parent.email) do %>
-                  <span class="email"><%= parent.email %></span><br>
-                <% end %>
-                <%= if not_empty(parent.mobile_phone) do %>
-                  <span class="phone"><%= parent.mobile_phone %></span><br>
-                <% end %>
-                <br>
+                <span><b><%= parent.first_name %> <%= parent.last_name %></b></span><br>
+                <div class="parent_contact">
+                  <%= if not_empty(parent.email) do %>
+                    <span class="email"><%= parent.email %></span><br>
+                  <% end %>
+                  <%= if not_empty(parent.mobile_phone) do %>
+                    <span class="phone"><%= parent.mobile_phone %></span><br>
+                  <% end %>
+                  <br>
+                </div>
               </div>
             <% end %>
             <div class="parent_address">
@@ -46,12 +48,13 @@
                 <span class="address_zip"><%= address.zip %></span><br>
               <% end %>
               <%= if not_empty(address.phone) do %>
-                <span class="phone"><%= address.phone %></span><br>
+                <span class="home_phone"><%= address.phone %></span><br>
               <% end %>
             </div>
             <br>
           <% end %>
-          <span class="notes"><%= student.notes %></span><br>
+          <span class="notes"><i><%= student.notes %></i></span><br>
+          <br>
         <% end %>
       </div>
     </div>

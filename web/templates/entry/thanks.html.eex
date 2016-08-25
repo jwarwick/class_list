@@ -15,7 +15,7 @@
         <h3><%= student.class.teacher %></h3>
       </div>
       <div class="student_name_bus">
-        <span class="student_name"><b><%= student.last_name %>, <%= student.first_name %></span></b><br>
+        <h4 class="student_name"><%= student.last_name %>, <%= student.first_name %></h4>
         <%= if student.bus.should_display do %>
           <span class="bus"><%= student.bus.name %></span><br>
         <% end %>
@@ -25,13 +25,15 @@
         <%= for parent <- parent_list do %>
           <div class="parent_name">
             <span><b><%= parent.first_name %> <%= parent.last_name %></b></span><br>
-            <%= if ClassList.DirectoryView.not_empty(parent.email) do %>
-              <span class="email"><%= parent.email %></span><br>
-            <% end %>
-            <%= if ClassList.DirectoryView.not_empty(parent.mobile_phone) do %>
-              <span class="phone"><%= parent.mobile_phone %></span><br>
-            <% end %>
-            <br>
+            <div class="parent_contact">
+              <%= if ClassList.DirectoryView.not_empty(parent.email) do %>
+                <span class="email"><%= parent.email %></span><br>
+              <% end %>
+              <%= if ClassList.DirectoryView.not_empty(parent.mobile_phone) do %>
+                <span class="phone"><%= parent.mobile_phone %></span><br>
+              <% end %>
+              <br>
+            </div>
           </div>
         <% end %>
         <div class="parent_address">
