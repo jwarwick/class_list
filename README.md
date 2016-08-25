@@ -17,6 +17,7 @@ The app can send email to inform the maintainer that a new entry has been receiv
 
 ## Environment Variables
 Define the following environment variables to enable certain features
+  * `HTTPS_HOST`: sets the `config/prod.exs` endpoint hostname for https support
   * `MAILGUN_DOMAIN`: as specified in the Mailgun control panel, something like `https://api.mailgun.net/v3/sandbox-our-domain.mailgun.org`
   * `MAILGUN_API_KEY`: as specified in the Mailgun control panel
   * `NOTIFY_EMAIL_TO` and `NOTIFY_EMAIL_FROM`: also need to be defined to use the Mailgun interface
