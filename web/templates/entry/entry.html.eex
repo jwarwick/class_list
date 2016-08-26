@@ -3,14 +3,14 @@
     <div class="form-group">
       <label for="firstname-{{count}}" class="col-md-2 control-label">First Name</label>
       <div class="col-md-8">
-        <input name="entry[student][{{count}}][first_name]" type="text" id="firstname-{{count}}" class="form-control" placeholder="Huckle">
+        <input name="entry[student][{{count}}][first_name]" type="text" id="firstname-{{count}}" class="form-control" >
       </div>
     </div>
 
     <div class="form-group">
       <label for="lastname-{{count}}" class="col-md-2 control-label">Last Name</label>
       <div class="col-md-8">
-        <input name="entry[student][{{count}}][last_name]" type="text" id="lastname-{{count}}" class="form-control" placeholder="Cat">
+        <input name="entry[student][{{count}}][last_name]" type="text" id="lastname-{{count}}" class="form-control">
       </div>
     </div>
 
@@ -49,28 +49,28 @@
     <div class="form-group">
       <label for="parent-firstname-{{count}}" class="col-md-2 control-label">First Name</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][first_name]" type="text" id="parent-firstname-{{count}}" class="form-control" placeholder="Fiona">
+        <input name="entry[parent][{{count}}][first_name]" type="text" id="parent-firstname-{{count}}" class="form-control">
       </div>
     </div>
 
     <div class="form-group">
       <label for="parent-lastname-{{count}}" class="col-md-2 control-label">Last Name</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][last_name]" type="text" id="parent-lastname-{{count}}" class="form-control" placeholder="Cat">
+        <input name="entry[parent][{{count}}][last_name]" type="text" id="parent-lastname-{{count}}" class="form-control">
       </div>
     </div>
 
     <div class="form-group">
       <label for="parent-email-{{count}}" class="col-md-2 control-label">Email</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][email]" type="email" id="parent-email-{{count}}" class="form-control" placeholder="fiona@busytown.net">
+        <input name="entry[parent][{{count}}][email]" type="email" id="parent-email-{{count}}" class="form-control">
       </div>
     </div>
 
     <div class="form-group">
       <label for="parent-mobile-{{count}}" class="col-md-2 control-label">Mobile Phone</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][mobile_phone]" type="tel" id="parent-mobile-{{count}}" class="form-control" placeholder="201-123-5678">
+        <input name="entry[parent][{{count}}][mobile_phone]" type="tel" id="parent-mobile-{{count}}" class="form-control">
       </div>
     </div>
 
@@ -84,42 +84,42 @@
     <div class="form-group parent-address">
       <label for="parent-tel-{{count}}" class="col-md-2 control-label">Home Phone</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][phone]" type="tel" id="parent-tel-{{count}}" class="form-control" placeholder="201-123-4567">
+        <input name="entry[parent][{{count}}][phone]" type="tel" id="parent-tel-{{count}}" class="form-control">
       </div>
     </div>
 
     <div class="form-group parent-address">
       <label for="parent-addr1-{{count}}" class="col-md-2 control-label">Address 1</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][address1]" type="text" id="parent-addr1-{{count}}" class="form-control" placeholder="123 Anywhere St">
+        <input name="entry[parent][{{count}}][address1]" type="text" id="parent-addr1-{{count}}" class="form-control">
       </div>
     </div>
 
     <div class="form-group parent-address">
       <label for="parent-addr2-{{count}}" class="col-md-2 control-label">Address 2</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][address2]" type="text" id="parent-addr2-{{count}}" class="form-control" placeholder="Apt 1">
+        <input name="entry[parent][{{count}}][address2]" type="text" id="parent-addr2-{{count}}" class="form-control">
       </div>
     </div>
 
     <div class="form-group parent-address">
       <label for="parent-city-{{count}}" class="col-md-2 control-label">City</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][city]" type="text" id="parent-city-{{count}}" class="form-control" placeholder="Busytown">
+        <input name="entry[parent][{{count}}][city]" type="text" id="parent-city-{{count}}" class="form-control">
       </div>
     </div>
 
     <div class="form-group parent-address">
       <label for="parent-state-{{count}}" class="col-md-2 control-label">State</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][state]" type="text" id="parent-state-{{count}}" class="form-control" placeholder="MA">
+        <input name="entry[parent][{{count}}][state]" type="text" id="parent-state-{{count}}" class="form-control">
       </div>
     </div>
 
     <div class="form-group parent-address">
       <label for="parent-zip-{{count}}" class="col-md-2 control-label">Zip</label>
       <div class="col-md-8">
-        <input name="entry[parent][{{count}}][zip]" type="text" id="parent-zip-{{count}}" class="form-control" placeholder="01072">
+        <input name="entry[parent][{{count}}][zip]" type="text" id="parent-zip-{{count}}" class="form-control">
       </div>
     </div>
 
@@ -189,7 +189,7 @@
           <div class="form-group">
             <label class="sr-only" for="notes">Notes</label>
             <div class="col-md-offset-2 col-md-8">
-              <textarea name="entry[notes]" id="notes" rows="3" class="form-control" placeholder="Anything you want the fine folks compiling the directory to know"></textarea>
+              <textarea name="entry[notes]" id="notes" rows="3" class="form-control" placeholder="Anything you want the fine folks compiling the directory to know. Let us know if you are on the PTO, a classroom representative, on the School Committee, on the School Council, or on the Safety Committee."></textarea>
             </div>
           </div>
         </div>
