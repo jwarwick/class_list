@@ -117,7 +117,7 @@
     </div>
 
     <div class="form-group parent-address">
-      <label for="parent-zip-{{count}}" class="col-md-2 control-label">Zip</label>
+      <label for="parent-zip-{{count}}" class="col-md-2 control-label">Zip Code</label>
       <div class="col-md-8">
         <input name="entry[parent][{{count}}][zip]" type="text" id="parent-zip-{{count}}" class="form-control">
       </div>
@@ -145,10 +145,7 @@
 
   <%= form_for @conn, "/", [as: :entry, class: "form-horizontal"],  fn _ -> %>
     <div class="panel panel-primary">
-      <div class="panel-heading panel-heading-with-button">
-        <button id="add-student-button" type="button" class="btn btn-default btn-small pull-right">
-          <span class="glyphicon glyphicon-plus-sign"></span> Add Another Student
-        </button>
+      <div class="panel-heading">
         <h2 class="panel-title">Student Information</h2>
       </div>
 
@@ -158,14 +155,14 @@
           <!-- student templates get added here -->
         </div>
 
+        <button id="add-student-button" type="button" class="btn btn-default btn-small pull-right">
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Another Student
+        </button>
       </div>
     </div>
 
     <div class="panel panel-primary">
-      <div class="panel-heading panel-heading-with-button">
-        <button id="add-parent-button" type="button" class="btn btn-default btn-small pull-right">
-          <span class="glyphicon glyphicon-plus-sign"></span> Add Another Parent
-        </button>
+      <div class="panel-heading">
         <h2 class="panel-title">Parent Information</h2>
       </div>
 
@@ -175,6 +172,9 @@
           <!-- parent templates get added here -->
         </div>
 
+        <button id="add-parent-button" type="button" class="btn btn-default btn-small pull-right">
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Another Parent
+        </button>
       </div>
     </div>
 
