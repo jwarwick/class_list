@@ -6,7 +6,9 @@ defmodule ClassList.Coherence.ViewHelpers do
   alias Coherence.Config
 
   @seperator {:safe, "&nbsp; | &nbsp;"}
-  @helpers Module.concat(Application.get_env(:coherence, :module), Router.Helpers)
+  @helpers Module.concat(
+        Application.get_env(:coherence, :module),
+        Router.Helpers)
 
   @recover_link  "Forgot your password?"
   @unlock_link   "Send an unlock email"
@@ -25,7 +27,8 @@ defmodule ClassList.Coherence.ViewHelpers do
       coherence_links(conn, :new_session)
       Generates: #{@recover_link}  #{@unlock_link} #{@register_link}
 
-      coherence_links(conn, :new_session, recover: "Password reset", register: false
+      coherence_links(conn, :new_session,
+          recover: "Password reset", register: false
       Generates: Password reset  #{@unlock_link}
 
       coherence_links(conn, :layout)             # when logged in
@@ -41,7 +44,7 @@ defmodule ClassList.Coherence.ViewHelpers do
     unlock?   = Keyword.get opts, :unlock, @unlock_link
     register? = Keyword.get opts, :register, @register_link
 
-    user_schema = Coherence.Config.user_schema
+    user_schema = Config.user_schema
     [
       recover_link(conn, user_schema, recover?),
       unlock_link(conn, user_schema, unlock?),
@@ -63,12 +66,21 @@ defmodule ClassList.Coherence.ViewHelpers do
       [
         content_tag(list_tag, current_user.name),
         content_tag(list_tag,
-          link(signout, to: coherence_path(@helpers, :session_path, conn, :delete, current_user), method: :delete, class: signout_class))
+          link(signout,
+            to: coherence_path(@helpers, :session_path,
+                    conn, :delete, current_user),
+            method: :delete, class: signout_class))
       ]
     else
-      signin_link = content_tag(list_tag, link(signin, to: coherence_path(@helpers, :session_path, conn, :new)))
+      signin_link = content_tag(list_tag,
+                                link(signin,
+                                to: coherence_path(@helpers,
+                                      :session_path, conn, :new)))
       if Config.has_option(:registerable) && register do
-        [content_tag(list_tag, link(register, to: coherence_path(@helpers, :registration_path, conn, :new))), signin_link]
+        [content_tag(list_tag,
+          link(register,
+            to: coherence_path(@helpers, :registration_path, conn, :new))),
+             signin_link]
       else
         signin_link
       end

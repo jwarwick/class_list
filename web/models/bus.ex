@@ -1,4 +1,7 @@
 defmodule ClassList.Bus do
+  @moduledoc """
+  Bus with student riders
+  """
   use ClassList.Web, :model
 
   schema "buses" do

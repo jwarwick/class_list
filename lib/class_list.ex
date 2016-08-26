@@ -1,5 +1,9 @@
 defmodule ClassList do
+  @moduledoc """
+  Main application supervisor
+  """
   use Application
+  alias ClassList.Endpoint
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -12,7 +16,8 @@ defmodule ClassList do
       supervisor(ClassList.Repo, []),
       # Start the endpoint when the application starts
       supervisor(ClassList.Endpoint, []),
-      # Start your own worker by calling: ClassList.Worker.start_link(arg1, arg2, arg3)
+      # Start your own worker by calling:
+      #   ClassList.Worker.start_link(arg1, arg2, arg3)
       # worker(ClassList.Worker, [arg1, arg2, arg3]),
     ]
 
@@ -25,7 +30,7 @@ defmodule ClassList do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    ClassList.Endpoint.config_change(changed, removed)
+    Endpoint.config_change(changed, removed)
     :ok
   end
 end

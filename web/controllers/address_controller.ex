@@ -27,7 +27,7 @@ defmodule ClassList.AddressController do
   end
 
   def show(conn, %{"id" => id}) do
-    address = Repo.get!(Address, id) |> Repo.preload(:parents)
+    address = Address |> Repo.get!(id) |> Repo.preload(:parents)
     render(conn, "show.html", address: address)
   end
 

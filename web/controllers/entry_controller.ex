@@ -4,6 +4,7 @@ defmodule ClassList.EntryController do
 
   alias ClassList.Entry
   alias ClassList.Mailer
+  alias ClassList.EntryConverter
 
   def index(conn, _params) do
     entries = Entry |> order_by([desc: :inserted_at]) |> Repo.all
@@ -18,7 +19,8 @@ defmodule ClassList.EntryController do
 
   def create_entry(conn, %{"entry" => entry_params}) do
     Logger.info "Creating entry: #{inspect entry_params}"
-    changeset = Entry.changeset(%Entry{}, %{data: :erlang.term_to_binary(entry_params)})
+    changeset = Entry.changeset(%Entry{},
+                        %{data: :erlang.term_to_binary(entry_params)})
 
     case Repo.insert(changeset) do
       {:error, _changeset} ->
@@ -27,9 +29,9 @@ defmodule ClassList.EntryController do
         :ok
     end
 
-    {student_list, _, _} = 
+    {student_list, _, _} =
       entry_params
-      |> ClassList.EntryConverter.convert
+      |> EntryConverter.convert
       |> check_conversion
 
     students =
@@ -41,20 +43,23 @@ defmodule ClassList.EntryController do
 
     conn
     |> put_layout({ClassList.EntryView, "layout.html"})
-    |> render("thanks.html", support_email: System.get_env("SUPPORT_EMAIL"), students: students)
+    |> render("thanks.html",
+         support_email: System.get_env("SUPPORT_EMAIL"),
+         students: students)
 
   end
-  
+
   defp strip_ok(list) do
     Enum.map(list, fn {_, s} -> s end)
   end
 
   defp preload_fields(list) do
-    Enum.map(list, fn s -> Repo.preload(s, [:bus, :class, [parents: :address]]) end)
+    Enum.map(list,
+      fn s -> Repo.preload(s, [:bus, :class, [parents: :address]]) end)
   end
 
   defp check_conversion(params = {students, addresses, parents}) do
-    result = 
+    result =
       [students, addresses, parents]
       |> List.flatten
       |> Enum.all?(&check_ok/1)

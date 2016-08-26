@@ -1,4 +1,7 @@
 defmodule ClassList.Student do
+  @moduledoc """
+  Students in a classroom
+  """
   use ClassList.Web, :model
 
   schema "students" do
@@ -9,7 +12,9 @@ defmodule ClassList.Student do
     belongs_to :bus, ClassList.Bus
     belongs_to :class, ClassList.Class
 
-    many_to_many :parents, ClassList.Parent, join_through: "parents_students", on_replace: :delete, on_delete: :delete_all
+    many_to_many :parents, ClassList.Parent,
+      join_through: "parents_students",
+      on_replace: :delete, on_delete: :delete_all
 
     timestamps()
   end

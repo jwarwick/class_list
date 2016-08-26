@@ -27,7 +27,7 @@ defmodule ClassList.BusController do
   end
 
   def show(conn, %{"id" => id}) do
-    bus = Repo.get!(Bus, id) |> Repo.preload(:students)
+    bus = Bus |> Repo.get!(id) |> Repo.preload(:students)
     render(conn, "show.html", bus: bus)
   end
 

@@ -11,7 +11,9 @@ defmodule ClassList.DirectoryView do
   def group_parents(student) do
     student.parents
     |> Enum.group_by(&(&1.address_id))
-    |> Enum.map(fn({_, parent_list}) -> {parent_list, List.first(parent_list).address} end)
+    |> Enum.map(fn({_, parent_list}) ->
+            {parent_list, List.first(parent_list).address}
+           end)
   end
 
   def not_empty(nil), do: false

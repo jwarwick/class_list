@@ -13,9 +13,21 @@ defmodule ClassList.EntryConverter do
   Convert a map of params to models inserted into the repo
   """
   def convert(params) do
-    students = build_student_changesets(params["student"], params["notes"]) |> insert_student_changes()
-    addresses = build_address_changesets(params["parent"]) |> insert_address_changes()
-    parents = build_parent_changesets(params["parent"], addresses, students) |> insert_parent_changes()
+    students =
+      params["student"]
+      |> build_student_changesets(params["notes"])
+      |> insert_student_changes()
+
+    addresses =
+      params["parent"]
+      |> build_address_changesets()
+      |> insert_address_changes()
+
+    parents =
+      params["parent"]
+      |> build_parent_changesets(addresses, students)
+      |> insert_parent_changes()
+
     {students, addresses, parents}
   end
 
@@ -39,7 +51,8 @@ defmodule ClassList.EntryConverter do
     |> Enum.map(&maybe_add_address_changeset/1)
   end
 
-  # don't add a changeset if the address is marked as "same address as previous parent"
+  # don't add a changeset if the address is marked as
+  # "same address as previous parent"
   defp maybe_add_address_changeset(%{"same-address" => "1"}) do
     nil
   end
@@ -60,8 +73,10 @@ defmodule ClassList.EntryConverter do
   defp duplicate_if_nil(val, _acc), do: val
 
   defp build_parent_changesets(parents, addresses, students) do
-    address_ids = Enum.map(addresses, fn {:ok, %Address{id: id}} -> Integer.to_string(id) end)
-    student_ids = Enum.map(students, fn {:ok, %Student{id: id}} -> Integer.to_string(id) end)
+    address_ids = Enum.map(addresses,
+        fn {:ok, %Address{id: id}} -> Integer.to_string(id) end)
+    student_ids = Enum.map(students,
+        fn {:ok, %Student{id: id}} -> Integer.to_string(id) end)
 
     parents
     |> Map.values

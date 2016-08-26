@@ -1,4 +1,7 @@
 defmodule ClassList.Class do
+  @moduledoc """
+  Class model, has many students
+  """
   use ClassList.Web, :model
 
   schema "classes" do

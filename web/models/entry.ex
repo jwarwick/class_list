@@ -1,4 +1,7 @@
 defmodule ClassList.Entry do
+  @moduledoc """
+  The raw map fields captured by the Entry controller
+  """
   use ClassList.Web, :model
 
   schema "entries" do

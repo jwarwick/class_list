@@ -1,4 +1,7 @@
 defmodule ClassList.User do
+  @moduledoc """
+  Application user model, supported by Coherence authentication
+  """
   use ClassList.Web, :model
   use Coherence.Schema
 

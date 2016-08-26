@@ -7,13 +7,15 @@ defmodule ClassList.StudentView do
   alias ClassList.Student
 
   def bus_select_list do
-    Bus.sorted(Bus)
+    Bus
+    |> Bus.sorted
     |> Repo.all
     |> Enum.map(fn bus -> {bus.name, bus.id} end)
   end
 
   def class_select_list do
-    Class.sorted(Class)
+    Class
+    |> Class.sorted
     |> Repo.all
     |> Enum.map(fn class -> {class.name, class.id} end)
   end

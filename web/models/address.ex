@@ -1,4 +1,7 @@
 defmodule ClassList.Address do
+  @moduledoc """
+  Address and home phone number, shared by multiple parents
+  """
   use ClassList.Web, :model
 
   schema "addresses" do

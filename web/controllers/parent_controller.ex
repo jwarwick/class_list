@@ -27,18 +27,18 @@ defmodule ClassList.ParentController do
   end
 
   def show(conn, %{"id" => id}) do
-    parent = Repo.get!(Parent, id) |> Repo.preload([:address, :students])
+    parent = Parent |> Repo.get!(id) |> Repo.preload([:address, :students])
     render(conn, "show.html", parent: parent)
   end
 
   def edit(conn, %{"id" => id}) do
-    parent = Repo.get!(Parent, id) |> Repo.preload(:students)
+    parent = Parent |> Repo.get!(id) |> Repo.preload(:students)
     changeset = Parent.changeset(parent)
     render(conn, "edit.html", parent: parent, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "parent" => parent_params}) do
-    parent = Repo.get!(Parent, id) |> Repo.preload(:students)
+    parent = Parent |> Repo.get!(id) |> Repo.preload(:students)
     changeset = Parent.changeset(parent, parent_params)
 
     case Repo.update(changeset) do
