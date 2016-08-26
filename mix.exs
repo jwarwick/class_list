@@ -43,7 +43,8 @@ defmodule ClassList.Mixfile do
      {:coherence, "~> 0.2"},
      {:poison, "~> 2.1", override: true},
      {:mailgun, "~> 0.1.2"},
-     {:dialyxir, "~> 0.3.5", only: :dev}]
+     {:dialyxir, "~> 0.3.5", only: :dev},
+     {:credo, "~> 0.4", only: [:dev, :test]}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
