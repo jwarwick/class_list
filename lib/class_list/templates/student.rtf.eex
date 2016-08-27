@@ -1,0 +1,50 @@
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\b\afs30\ab\rtlch \ltrch\loch\fs30\loch\f3
+<%= @student.first_name %> <%= @student.last_name %>}
+<%= if @student.bus.should_display do %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs22\rtlch \ltrch\loch\fs22\loch\f3
+<%= @student.bus.name %>}
+<% end %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs21\rtlch \ltrch\loch\fs21\loch\f3
+}
+<%= for {parent_list, address} <- ClassList.DirectoryView.group_parents(@student) do %>
+<%= for parent <- parent_list do %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\b\afs22\ab\rtlch \ltrch\loch\fs22\loch\f3
+<%= parent.first_name %> <%= parent.last_name %>}
+<%= if ClassList.DirectoryView.not_empty(parent.email) do %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24\li58\ri0\lin58\rin0\fi0{\afs22\rtlch \ltrch\loch\fs22\loch\f3
+<%= parent.email %>}
+<% end %>
+<%= if ClassList.DirectoryView.not_empty(parent.mobile_phone) do %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24\li58\ri0\lin58\rin0\fi0{\afs22\rtlch \ltrch\loch\fs22\loch\f3
+Cell: <%= parent.mobile_phone %>}
+<% end %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs21\rtlch \ltrch\loch\fs21\loch\f3
+}
+<% end %>
+
+
+<%= if ClassList.DirectoryView.not_empty(address.address1) do %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs22\rtlch \ltrch\loch\fs22\loch\f3
+<%= address.address1 %>}
+<% end %>
+<%= if ClassList.DirectoryView.not_empty(address.address2) do %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs22\rtlch \ltrch\loch\fs22\loch\f3
+<%= address.address2 %>}
+<% end %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs22\rtlch \ltrch\loch\fs22\loch\f3
+<%= if ClassList.DirectoryView.not_empty(address.city) do %><%= address.city %><% end %>, <%= if ClassList.DirectoryView.not_empty(address.state) do %><%= address.state %><% end %>  <%= if ClassList.DirectoryView.not_empty(address.zip) do %><%= address.zip %><% end %>}
+<%= if ClassList.DirectoryView.not_empty(address.phone) do %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs22\rtlch \ltrch\loch\fs22\loch\f3
+Home Phone: <%= address.phone %>}
+<% end %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs21\rtlch \ltrch\loch\fs21\loch\f3
+}
+
+<% end %>
+
+<%= if ClassList.DirectoryView.not_empty(@student.notes) do %>
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\cf3\i\afs22\ai\rtlch \ltrch\loch\fs22\loch\f3
+*<%= @student.notes %>}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs21\rtlch \ltrch\loch\fs21\loch\f3
+}
+<% end %>
