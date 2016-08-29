@@ -8,6 +8,7 @@ defmodule ClassList.DirectoryController do
               |> Class.sorted
               |> Repo.all
               |> Repo.preload([students: from(Student, order_by: [:last_name])])
+              |> Repo.preload([students: [:bus, :class, [parents: :address]]])
     render(conn, "index.html", classes: classes)
   end
 end

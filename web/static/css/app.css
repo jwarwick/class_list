@@ -26,3 +26,12 @@ h2.panel-title {
 .student_name {
   margin-bottom: 0px;
 }
+
+.teacher_name {
+  margin-bottom: 30px;
+}
+
+p.notes {
+  font-style: italic;
+  color: red;
+}

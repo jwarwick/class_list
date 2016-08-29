@@ -3,10 +3,6 @@ defmodule ClassList.DirectoryView do
   @dialyzer :no_match
   alias ClassList.Repo
 
-  def preload_student(student) do
-    Repo.preload(student, [:bus, parents: :address])
-  end
-
   # [{[p1, p2], address1}, {[p3, p4], address2}]
   def group_parents(student) do
     student.parents

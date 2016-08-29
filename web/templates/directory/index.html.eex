@@ -4,11 +4,10 @@
     <div class="classroom">
       <div class="class_name">
         <h2><%= class.name %></h2>
-        <h3><%= class.teacher %></h3>
+        <h3 class="teacher_name"><%= class.teacher %></h3>
       </div>
       <div class="students">
         <%= for student <- class.students do %>
-          <% student = preload_student(student) %>
           <div class="student_name_bus">
             <h4 class="student_name"><%= student.last_name %>, <%= student.first_name %></h4>
             <%= if student.bus.should_display do %>
@@ -53,7 +52,7 @@
             </div>
             <br>
           <% end %>
-          <span class="notes"><i><%= student.notes %></i></span><br>
+          <p class="notes"><%= student.notes %></p>
           <br>
         <% end %>
       </div>

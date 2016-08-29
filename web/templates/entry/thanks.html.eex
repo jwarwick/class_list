@@ -12,7 +12,7 @@
     <%= for student <- @students do %>
       <div class="class_name">
         <h2><%= student.class.name %></h2>
-        <h3><%= student.class.teacher %></h3>
+        <h3 class="teacher_name"><%= student.class.teacher %></h3>
       </div>
       <div class="student_name_bus">
         <h4 class="student_name"><%= student.last_name %>, <%= student.first_name %></h4>
@@ -58,7 +58,7 @@
         </div>
         <br>
       <% end %>
-      <span class="notes"><i><%= student.notes %></i></span><br>
+      <p class="notes"><%= student.notes %></p>
     <% end %>
   </div>
 </div>
