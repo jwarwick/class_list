@@ -7,14 +7,14 @@ defmodule ClassList.Formatter do
   alias ClassList.Class
   alias ClassList.Student
   alias ClassList.Repo
-  
-  EEx.function_from_file(:def, :directory, 
+
+  EEx.function_from_file(:def, :directory,
                          Path.expand("templates/directory.rtf.eex", __DIR__),
                          [:assigns])
-  EEx.function_from_file(:def, :class, 
+  EEx.function_from_file(:def, :class,
                          Path.expand("templates/class.rtf.eex", __DIR__),
                          [:assigns])
-  EEx.function_from_file(:def, :student, 
+  EEx.function_from_file(:def, :student,
                          Path.expand("templates/student.rtf.eex", __DIR__),
                          [:assigns])
 
@@ -22,7 +22,7 @@ defmodule ClassList.Formatter do
   Generate the RTF string
   """
   def create do
-    classes = 
+    classes =
       Class
       |> Class.sorted
       |> Repo.all
@@ -39,5 +39,4 @@ defmodule ClassList.Formatter do
     result = create()
     File.write(Path.expand(path), result)
   end
-
 end
