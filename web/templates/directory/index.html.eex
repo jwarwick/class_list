@@ -1,4 +1,5 @@
 <h2>Student Directory</h2>
+<%= link "Download", to: directory_path(@conn, :download) %>
 <div class="directory"
   <%= for class <- @classes do %>
     <div class="classroom">

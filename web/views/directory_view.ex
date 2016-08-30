@@ -1,7 +1,6 @@
 defmodule ClassList.DirectoryView do
   use ClassList.Web, :view
   @dialyzer :no_match
-  alias ClassList.Repo
 
   # [{[p1, p2], address1}, {[p3, p4], address2}]
   def group_parents(student) do
