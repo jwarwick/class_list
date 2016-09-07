@@ -43,7 +43,7 @@
                 <span class="address_city"><%= address.city %>,</span>
               <% end %>
               <%= if not_empty(address.state) do %>
-                <span class="address_state"><%= address.state %>  </span>
+                <span class="address_state"><%= Display.format_state(address.state) %>  </span>
               <% end %>
               <%= if not_empty(address.zip) do %>
                 <span class="address_zip"><%= address.zip %></span><br>

@@ -20,4 +20,15 @@ defmodule ClassList.Display do
     Enum.join([area, prefix, suffix], "-")
   end
 
+  @doc """
+  Format state name
+  """
+  def format_state(str) do
+    state = String.replace(str, ~r/[^A-Za-z]/, "")
+    case String.length(state) do
+      2 -> String.upcase(state)
+      _ -> str
+    end
+  end
+
 end
