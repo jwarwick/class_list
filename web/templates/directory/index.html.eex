@@ -11,7 +11,7 @@
       <div class="students">
         <%= for student <- class.students do %>
           <div class="student_name_bus">
-            <h4 class="student_name"><%= student.last_name %>, <%= student.first_name %></h4>
+            <h4 class="student_name"><%= String.trim(student.last_name) %>, <%= String.trim(student.first_name) %></h4>
             <%= if student.bus.should_display do %>
               <span class="bus"><%= student.bus.name %></span><br>
             <% end %>
@@ -20,10 +20,10 @@
           <%= for {parent_list, address} <- group_parents(student) do %>
             <%= for parent <- parent_list do %>
               <div class="parent_name">
-                <span><b><%= parent.first_name %> <%= parent.last_name %></b></span><br>
+                <span><b><%= String.trim(parent.first_name) %> <%= String.trim(parent.last_name) %></b></span><br>
                 <div class="parent_contact">
                   <%= if not_empty(parent.email) do %>
-                    <span class="email"><%= parent.email %></span><br>
+                    <span class="email"><%= String.trim(parent.email) %></span><br>
                   <% end %>
                   <%= if not_empty(parent.mobile_phone) do %>
                     <span class="phone">Cell: <%= Display.format_phone(parent.mobile_phone) %></span><br>
@@ -34,19 +34,19 @@
             <% end %>
             <div class="parent_address">
               <%= if not_empty(address.address1) do %>
-                <span class="address_street"><%= address.address1 %></span><br>
+                <span class="address_street"><%= String.trim(address.address1) %></span><br>
               <% end %>
               <%= if not_empty(address.address2) do %>
-                <span class="address_street2"><%= address.address2 %></span><br>
+                <span class="address_street2"><%= String.trim(address.address2) %></span><br>
               <% end %>
               <%= if not_empty(address.city) do %>
-                <span class="address_city"><%= address.city %>,</span>
+                <span class="address_city"><%= String.trim(address.city) %>,</span>
               <% end %>
               <%= if not_empty(address.state) do %>
                 <span class="address_state"><%= Display.format_state(address.state) %>  </span>
               <% end %>
               <%= if not_empty(address.zip) do %>
-                <span class="address_zip"><%= address.zip %></span><br>
+                <span class="address_zip"><%= String.trim(address.zip) %></span><br>
               <% end %>
               <%= if not_empty(address.phone) do %>
                 <span class="home_phone">Home Phone: <%= Display.format_phone(address.phone) %></span><br>
