@@ -1,5 +1,6 @@
 \par \pard\plain \s24\b\langfe255\afs30\lang255\ab\loch\f3\fs30\lang255{\rtlch \ltrch\loch
 <% alias ClassList.DirectoryView %>
+<% alias ClassList.Display %>
 <%= @student.first_name %> <%= @student.last_name %>}
 <%= if @student.bus.should_display do %>
 \par \pard\plain \s25\langfe255\afs22\lang255\loch\f3\fs22\lang255{\rtlch \ltrch\loch
@@ -17,7 +18,7 @@
 <% end %>
 <%= if DirectoryView.not_empty(parent.mobile_phone) do %>
 \par \pard\plain \s27\li58\ri0\lin58\rin0\fi0\langfe255\afs22\lang255\loch\f3\fs22\lang255{\rtlch \ltrch\loch
-Cell: <%= parent.mobile_phone %>}
+Cell: <%= Display.format_phone(parent.mobile_phone) %>}
 <% end %>
 \par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs21\rtlch \ltrch\loch\fs21\loch\f3
 }
@@ -36,7 +37,7 @@ Cell: <%= parent.mobile_phone %>}
 <%= if DirectoryView.not_empty(address.city) do %><%= address.city %><% end %>, <%= if DirectoryView.not_empty(address.state) do %><%= address.state %><% end %>  <%= if DirectoryView.not_empty(address.zip) do %><%= address.zip %><% end %>}
 <%= if DirectoryView.not_empty(address.phone) do %>
 \par \pard\plain \s28\langfe255\afs22\lang255\loch\f3\fs22\lang255{\rtlch \ltrch\loch
-Home Phone: <%= address.phone %>}
+Home Phone: <%= Display.format_phone(address.phone) %>}
 <% end %>
 \par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\aspalpha\ltrpar\langfe255\lang255\cf0\kerning1\hich\af4\dbch\af6\afs24\lang255\loch\f0\fs24{\afs22\rtlch \ltrch\loch\fs22\loch\f3
 }

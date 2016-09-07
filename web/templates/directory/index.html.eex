@@ -1,3 +1,4 @@
+<% alias ClassList.Display %>
 <h2>Student Directory</h2>
 <%= link "Download", to: directory_path(@conn, :download) %>
 <div class="directory"
@@ -25,7 +26,7 @@
                     <span class="email"><%= parent.email %></span><br>
                   <% end %>
                   <%= if not_empty(parent.mobile_phone) do %>
-                    <span class="phone"><%= parent.mobile_phone %></span><br>
+                    <span class="phone">Cell: <%= Display.format_phone(parent.mobile_phone) %></span><br>
                   <% end %>
                   <br>
                 </div>
@@ -48,7 +49,7 @@
                 <span class="address_zip"><%= address.zip %></span><br>
               <% end %>
               <%= if not_empty(address.phone) do %>
-                <span class="home_phone"><%= address.phone %></span><br>
+                <span class="home_phone">Home Phone: <%= Display.format_phone(address.phone) %></span><br>
               <% end %>
             </div>
             <br>
