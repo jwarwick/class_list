@@ -7,7 +7,7 @@ defmodule ClassList.Display do
   Format a telephone number
   """
   def format_phone(str) do
-    numbers = String.replace(str, ~r/[^0-9]/, "")
+    numbers = str |> String.replace(~r/[^0-9]/, "") |> String.trim_leading("1")
     case String.length(numbers) do
       10 -> clean_phone(numbers)
       _ -> str
