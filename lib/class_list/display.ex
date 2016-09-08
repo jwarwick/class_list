@@ -4,6 +4,14 @@ defmodule ClassList.Display do
   """
 
   @doc """
+  Format a name, handling `nil`
+  """
+  def format_name(nil), do: ""
+  def format_name(str) do
+    String.trim(str)
+  end
+
+  @doc """
   Format a telephone number
   """
   def format_phone(str) do

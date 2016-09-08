@@ -11,7 +11,7 @@
       <div class="students">
         <%= for student <- class.students do %>
           <div class="student_name_bus">
-            <h4 class="student_name"><%= String.trim(student.last_name) %>, <%= String.trim(student.first_name) %></h4>
+            <h4 class="student_name"><%= Display.format_name(student.last_name) %>, <%= Display.format_name(student.first_name) %></h4>
             <%= if student.bus.should_display do %>
               <span class="bus"><%= student.bus.name %></span><br>
             <% end %>
@@ -20,7 +20,7 @@
           <%= for {parent_list, address} <- group_parents(student) do %>
             <%= for parent <- parent_list do %>
               <div class="parent_name">
-                <span><b><%= String.trim(parent.first_name) %> <%= String.trim(parent.last_name) %></b></span><br>
+                <span><b><%= Display.format_name(parent.first_name) %> <%= Display.format_name(parent.last_name) %></b></span><br>
                 <div class="parent_contact">
                   <%= if not_empty(parent.email) do %>
                     <span class="email"><%= String.trim(parent.email) %></span><br>
