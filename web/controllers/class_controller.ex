@@ -2,6 +2,7 @@ defmodule ClassList.ClassController do
   use ClassList.Web, :controller
 
   alias ClassList.Class
+  alias ClassList.Student
 
   def index(conn, _params) do
     classes = Class |> Class.sorted |> Repo.all
@@ -64,7 +65,7 @@ defmodule ClassList.ClassController do
   end
 
   def list(conn, _params) do
-    classes = Class |> Class.sorted |> Repo.all |> Repo.preload(:students)
+    classes = Class |> Class.sorted |> Repo.all |> Repo.preload([students: from(Student, order_by: [:last_name])])
     render(conn, "list.html", classes: classes)
   end
 end

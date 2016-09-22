@@ -1,10 +1,11 @@
 <h2>Class Listing</h2>
+<% alias ClassList.Display %>
 
 <%= for class <- @classes do %>
   <h3><%= class.name %>, <%= class.teacher %> (<%= Enum.count(class.students) %> students)</h3>
   <ul>
     <%= for student <- class.students do %>
-      <li><%= student.last_name %>, <%= student.first_name %></li>
+      <li><%= Display.format_name(student.last_name) %>, <%= Display.format_name(student.first_name) %></li>
   <% end %>
   </ul>
 <% end %>
