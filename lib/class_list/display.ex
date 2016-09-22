@@ -47,7 +47,7 @@ defmodule ClassList.Display do
     {has_state, state} = fix_string(state)
     state = format_state(state)
     {_has_zip, zip} = fix_string(zip)
-    
+
     comma = if (has_city && has_state) do
       ", "
     else
@@ -57,16 +57,11 @@ defmodule ClassList.Display do
     "#{city}#{comma}#{state}  #{zip}"
   end
 
-  # returns {string_has_content_boolean?, string_value ("" if has_content is false}
+  # returns {string_has_content_boolean?, string_value}
+  # ("" if has_content is false)
   defp fix_string(nil), do: {false, ""}
   defp fix_string(str) do
     str = String.trim(str)
     {0 != String.length(str), str}
   end
-
-  # defp not_empty(nil), do: false
-  # defp not_empty(str) do
-  #   length = str |> String.trim |> String.length
-  #   0 != length
-  # end
 end

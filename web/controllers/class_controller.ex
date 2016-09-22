@@ -65,7 +65,10 @@ defmodule ClassList.ClassController do
   end
 
   def list(conn, _params) do
-    classes = Class |> Class.sorted |> Repo.all |> Repo.preload([students: from(Student, order_by: [:last_name])])
+    classes = Class
+              |> Class.sorted
+              |> Repo.all
+              |> Repo.preload([students: from(Student, order_by: [:last_name])])
     render(conn, "list.html", classes: classes)
   end
 end
