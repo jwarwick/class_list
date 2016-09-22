@@ -45,6 +45,7 @@ defmodule ClassList.Router do
     pipe_through :protected
 
     resources "/buses", BusController
+    get "/classes/list", ClassController, :list
     resources "/classes", ClassController
     resources "/addresses", AddressController
     resources "/students", StudentController

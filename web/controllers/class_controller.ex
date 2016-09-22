@@ -62,4 +62,9 @@ defmodule ClassList.ClassController do
     |> put_flash(:info, "Class deleted successfully.")
     |> redirect(to: class_path(conn, :index))
   end
+
+  def list(conn, _params) do
+    classes = Class |> Class.sorted |> Repo.all |> Repo.preload(:students)
+    render(conn, "list.html", classes: classes)
+  end
 end

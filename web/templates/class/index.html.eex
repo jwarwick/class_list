@@ -28,3 +28,5 @@
 </table>
 
 <%= link "New class", to: class_path(@conn, :new) %>
+<br>
+<%= link "Class Listing", to: class_path(@conn, :list) %>
