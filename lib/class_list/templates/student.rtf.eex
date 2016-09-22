@@ -34,7 +34,7 @@ Cell: <%= Display.format_phone(parent.mobile_phone) %>}
 <%= String.trim(address.address2) %>}
 <% end %>
 \par \pard\plain \s28\langfe255\afs22\lang255\loch\f3\fs22\lang255{\rtlch \ltrch\loch
-<%= if DirectoryView.not_empty(address.city) do %><%= String.trim(address.city) %><% end %>, <%= if DirectoryView.not_empty(address.state) do %><%= Display.format_state(address.state) %><% end %>  <%= if DirectoryView.not_empty(address.zip) do %><%= String.trim(address.zip) %><% end %>}
+<%= Display.format_city_address(address.city, address.state, address.zip) %>}
 <%= if DirectoryView.not_empty(address.phone) do %>
 \par \pard\plain \s28\langfe255\afs22\lang255\loch\f3\fs22\lang255{\rtlch \ltrch\loch
 Home Phone: <%= Display.format_phone(address.phone) %>}
