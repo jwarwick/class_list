@@ -49,6 +49,7 @@ defmodule ClassList.Router do
     resources "/classes", ClassController
     resources "/addresses", AddressController
     resources "/students", StudentController
+    get "/parents/email_list", ParentController, :email_list
     resources "/parents", ParentController
     resources "/entries", EntryController, only: [:index, :show, :delete]
     get "/directory", DirectoryController, :index

@@ -62,4 +62,13 @@ defmodule ClassList.ParentController do
     |> put_flash(:info, "Parent deleted successfully.")
     |> redirect(to: parent_path(conn, :index))
   end
+
+  def email_list(conn, _params) do
+    parents = Parent |> order_by([:last_name, :first_name]) |> where([p], not is_nil(p.email)) |> Repo.all
+    conn
+    |> put_resp_content_type("text/csv")
+    |> put_resp_header("Content-Disposition", "attachment; filename=\"contact_list.csv\"")
+    |> put_status(200)
+    |> render("email_list.csv", parents: parents, group: "Parent Emails")
+  end
 end

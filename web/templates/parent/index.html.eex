@@ -26,3 +26,5 @@
 </table>
 
 <%= link "New parent", to: parent_path(@conn, :new) %>
+<br>
+<%= link "Email Listing CSV", to: parent_path(@conn, :email_list) %>
