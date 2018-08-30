@@ -77,7 +77,7 @@
     <div class="form-group">
       <label for="parent-same-address-{{count}}" class="col-md-4 control-label">
         <input name="entry[parent][{{count}}][same-address]" type="checkbox" value="1" id="parent-same-address-{{count}}" class="parent-same-address-checkbox">
-        Same Address As Previous Parent
+        Same Address As Previous Parent/Guardian
       </label>
     </div>
 
@@ -163,7 +163,7 @@
 
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h2 class="panel-title">Parent Information</h2>
+        <h2 class="panel-title">Parent/Guardian Information</h2>
       </div>
 
       <div class="panel-body">
@@ -173,7 +173,7 @@
         </div>
 
         <button id="add-parent-button" type="button" class="btn btn-default btn-small pull-right">
-          <span class="glyphicon glyphicon-plus-sign"></span> Add Another Parent
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Another Parent/Guardian
         </button>
       </div>
     </div>
