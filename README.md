@@ -1,5 +1,7 @@
 # ClassList
 
+__NOTE:__ This won't work with Postgres > 9.6, because `postgrex` needs to be updated, which requires updates to many other packages. This is a problem when deploying to Heroku.
+
 Web application to make school classroom directories. Built with Elixir and Phoenix.
 
 ## Setup
